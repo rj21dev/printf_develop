@@ -16,7 +16,7 @@ int	ft_printf(const char *str, ...)
 		else
 		{
 			printed += ft_processor(&str[i + 1], argptr);
-			++i;
+			i += 1;
 		}
 		++i;
 	}

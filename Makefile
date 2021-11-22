@@ -1,5 +1,5 @@
 NAME	= ft_printf
-SRC		= main.c ft_printf.c ft_putchar.c ft_putnbr.c ft_processor.c ft_putstr.c ft_itoa_base.c
+SRC		= main.c ft_printf.c ft_putchar.c ft_itoa.c ft_processor.c ft_putstr.c ft_ultoa.c
 HDR		= header.h
 OBJ		= $(SRC:.c=.o)
 CC		= gcc

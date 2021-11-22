@@ -3,10 +3,10 @@
 
 int	main(void)
 {
-	printf("%d\n", printf("Char: %c, Int: %d, Int: %i, Percent: %%, String: %s\n", '$', 555, -777, "@it_works@"));
-	printf("%d\n", ft_printf("Char: %c, Int: %d, Int: %i, Percent: %%, String: %s\n", '$', 555, -777, "@it_works@"));
-	printf("%d\n", printf("Char: %c, Int: %d\n", '$', 1234567890));
-	printf("%d\n", ft_printf("Char: %c, Int: %d\n", '$', 1234567890));
+	printf("%d\n", printf("Char: %c, Int: %d, Int: %i, Uint: %lu, Percent: %%, String: %s, Hex: %X\n", '$', 555, -777, 4294967295, "@it_works@", -255));
+	printf("%d\n", ft_printf("Char: %c, Int: %d, Int: %i, Uint: %u, Percent: %%, String: %s, Hex: %X\n", '$', 555, -777, 4294967295, "@it_works@", -255));
+	//printf("%d\n", printf("Char: %c, Int: %lu\n", '$', 2147483650));
+	//printf("%d\n", ft_printf("Char: %c, Int: %u\n", '$', 2147483650));
 	
 	
 	
