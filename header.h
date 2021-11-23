@@ -5,6 +5,18 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
+typedef struct s_flags
+{
+	int	plus;
+	int	minus;
+	int zero;
+	int	space;
+	int hash;
+	int	width;
+	int	percition;
+	int	type;
+}	t_flags;
+
 # define STDOUT 1
 
 int	ft_printf(const char *str, ...);
