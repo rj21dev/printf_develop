@@ -12,7 +12,7 @@ static int	is_fmt_type(int c)
 
 static void	ft_search_flags(const char *fmt, int *index, t_flags *flags)
 {
-	while (*fmt && is_fmt_flag(*fmt))
+	while (fmt[*index] && is_fmt_flag(*fmt))
 	{
 		if (fmt[*index] == '0')
 			flags->zero = 1;
