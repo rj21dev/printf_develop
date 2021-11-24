@@ -49,6 +49,6 @@ void ft_format_parcer(const char *fmt, int *index, t_flags *flags)
 {
 	ft_search_flags(fmt, index, flags);
 	ft_search_sizes(fmt, index, flags);
-	if (is_fmt_type(*fmt))
-		flags->type = *fmt;
+	if (is_fmt_type(fmt[*index]))
+		flags->type = fmt[*index];
 }
