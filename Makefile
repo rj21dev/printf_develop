@@ -1,6 +1,8 @@
-NAME	= ft_printf
-SRC		= main.c ft_printf.c ft_putchar.c ft_itoa.c ft_type_processing.c ft_putstr.c ft_ultoa.c
-HDR		= header.h
+NAME		= libftprintf.a
+SRC			= ft_printf.c ft_type_processing.c
+HDR			= header.h
+LIB_SRC		= ./libft
+LIB_NAME	= ./libft/libft.a
 OBJ		= $(SRC:.c=.o)
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
@@ -8,18 +10,25 @@ CFLAGS	= -Wall -Wextra -Werror
 all: $(NAME)
 
 %.o: %.c $(HDR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I $(LIB_SRC) -c $< -o $@
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@
+$(NAME): $(LIB_NAME) $(OBJ)
+	cp $< $@
+	ar -rcs $@ $(OBJ)
 
-run:
-	./$(NAME)
+$(LIB_NAME) : libft ;
+
+libft :
+	$(MAKE) -C $(LIB_SRC)
 
 clean:
+	$(MAKE) -C $(LIB_SRC) clean
 	rm -f $(OBJ)
 
 fclean: clean
+	$(MAKE) -C $(LIB_SRC) fclean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY : all libft clean fclean re

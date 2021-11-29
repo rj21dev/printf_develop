@@ -1,4 +1,5 @@
 #include "header.h"
+#include "./libft/libft.h"
 
 int	ft_print_decimal(va_list argptr)
 {
@@ -20,7 +21,7 @@ int	ft_print_unsigned(va_list argptr)
 	int		printed;
 
 	printed = 0;
-	num = ft_ultoa(va_arg(argptr, unsigned int), "0123456789");
+	num = ft_ultoa(va_arg(argptr, unsigned int), DEC);
 	if (!num)
 		return (printed);
 	printed += ft_putstr_fd(num, STDOUT);
@@ -34,7 +35,7 @@ int	ft_print_hex(va_list argptr)
 	int		printed;
 
 	printed = 0;
-	hex = ft_ultoa(va_arg(argptr, unsigned int), "0123456789abcdef");
+	hex = ft_ultoa(va_arg(argptr, unsigned int), HEX);
 	if (!hex)
 		return (printed);
 	printed += ft_putstr_fd(hex, STDOUT);
@@ -48,7 +49,7 @@ int	ft_print_upper_hex(va_list argptr)
 	int		printed;
 
 	printed = 0;
-	upper_hex = ft_ultoa(va_arg(argptr, unsigned int), "0123456789ABCDEF");
+	upper_hex = ft_ultoa(va_arg(argptr, unsigned int), HEX_UP);
 	if (!upper_hex)
 		return (printed);
 	printed += ft_putstr_fd(upper_hex, STDOUT);
@@ -62,7 +63,7 @@ int	ft_print_voidptr(va_list argptr)
 	int		printed;
 
 	printed = 0;
-	voidptr = ft_ultoa(va_arg(argptr, unsigned int), "0123456789abcdef");
+	voidptr = ft_ultoa(va_arg(argptr, unsigned int), HEX);
 	if (!voidptr)
 		return (printed);
 	printed += ft_putstr_fd("0x", STDOUT);

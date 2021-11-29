@@ -1,4 +1,5 @@
 #include "header.h"
+#include "./libft/libft.h"
 
 static int	ft_print_str(va_list argptr)
 {
@@ -45,14 +46,10 @@ int	ft_printf(const char *str, ...)
 	va_start(argptr, str);
 	while (str[i])
 	{
-		if (str[i] != '%')
-			printed += ft_putchar_fd(str[i], STDOUT);
+		if (str[i] == '%' && str[i + 1])
+			printed += ft_type_selector(&str[++i], argptr);		
 		else
-		{
-			if (!str[i + 1])
-				break;
-			printed += ft_type_selector(&str[++i], argptr);
-		}
+			printed += ft_putchar_fd(str[i], STDOUT);
 		++i;
 	}
 	va_end(argptr);
