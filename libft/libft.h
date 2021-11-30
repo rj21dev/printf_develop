@@ -6,7 +6,7 @@
 /*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 19:25:42 by rjada             #+#    #+#             */
-/*   Updated: 2021/10/13 20:28:14 by rjada            ###   ########.fr       */
+/*   Updated: 2021/11/30 18:56:56 by rjada            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_realloc(void *src, size_t size);
 
-int	ft_putchar_fd(char c, int fd);
-int	ft_putstr_fd(char *s, int fd);
+int		ft_putchar_fd(char c, int fd);
+int		ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
@@ -64,7 +64,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 char	*get_next_line(int fd);
 char	*ft_itoa(int n);
-char    *ft_ultoa(unsigned long int nbr, char *base);
+char	*ft_ultoa(unsigned long int nbr, char *base);
 char	*ft_strdup(const char *src);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);

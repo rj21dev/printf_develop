@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/30 18:28:58 by rjada             #+#    #+#             */
+/*   Updated: 2021/11/30 18:39:56 by rjada            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 #include "./libft/libft.h"
 
@@ -7,8 +19,8 @@ static int	ft_print_str(va_list argptr)
 
 	str = va_arg(argptr, char *);
 	if (!str)
-		return(ft_putstr_fd("(null)", STDOUT));
-    return (ft_putstr_fd(str, STDOUT));
+		return (ft_putstr_fd("(null)", STDOUT));
+	return (ft_putstr_fd(str, STDOUT));
 }
 
 static int	ft_type_selector(const char *str, va_list argptr)
@@ -47,7 +59,7 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%' && str[i + 1])
-			printed += ft_type_selector(&str[++i], argptr);		
+			printed += ft_type_selector(&str[++i], argptr);
 		else
 			printed += ft_putchar_fd(str[i], STDOUT);
 		++i;

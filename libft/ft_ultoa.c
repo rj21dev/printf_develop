@@ -1,31 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultoa.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/30 18:33:35 by rjada             #+#    #+#             */
+/*   Updated: 2021/11/30 18:48:05 by rjada            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static size_t	count_numlen(unsigned long int nbr, size_t baselen);
 
-static int	is_base_valid(char *base);
+static int		is_base_valid(char *base);
 
-char    *ft_ultoa(unsigned long int nbr, char *base)
+char	*ft_ultoa(unsigned long int nbr, char *base)
 {
-    char    	        *num;
-    size_t				numlen;
-    size_t				baselen;
-   
-    if (!is_base_valid(base))
+	char	*num;
+	size_t	numlen;
+	size_t	baselen;
+
+	if (!is_base_valid(base))
 		return (NULL);
 	baselen = ft_strlen(base);
 	numlen = count_numlen(nbr, baselen);
-    num = (char *) malloc(sizeof(char) * numlen + (!nbr) + 1);
-    if (!num)
-        return (NULL);
-    num[numlen + (!nbr)] = 0;
-    if (!nbr)
-        num[0] = '0';
-    while (nbr)
-    {
-        num[--numlen] = base[nbr % baselen];
-        nbr /= baselen;
-    }
-    return (num);
+	num = (char *) malloc(sizeof(char) * numlen + (!nbr) + 1);
+	if (!num)
+		return (NULL);
+	num[numlen + (!nbr)] = 0;
+	if (!nbr)
+		num[0] = '0';
+	while (nbr)
+	{
+		num[--numlen] = base[nbr % baselen];
+		nbr /= baselen;
+	}
+	return (num);
 }
 
 static size_t	count_numlen(unsigned long int nbr, size_t baselen)

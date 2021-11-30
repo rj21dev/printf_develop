@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rjada <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/30 18:55:49 by rjada             #+#    #+#             */
+/*   Updated: 2021/11/30 18:55:54 by rjada            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static char	*read_from_fd(int fd, char **remainder, char **line);
@@ -6,7 +18,7 @@ static char	*eof_errno_case(int bytes_read, char **remainder, char **line);
 
 char	*get_next_line(int fd)
 {
-	static char	*remainder[OPEN_MAX + 1];
+	static char	*tail[OPEN_MAX + 1];
 	char		*line;
 	char		*eol_ptr;
 	char		*tmp;
@@ -14,23 +26,23 @@ char	*get_next_line(int fd)
 	line = NULL;
 	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (remainder[fd])
+	if (tail[fd])
 	{
-		eol_ptr = ft_strchr(remainder[fd], '\n');
+		eol_ptr = ft_strchr(tail[fd], '\n');
 		if (eol_ptr)
 		{
-			line = ft_substr(remainder[fd], 0, eol_ptr - remainder[fd] + 1);
-			tmp = ft_substr(remainder[fd], eol_ptr - remainder[fd] + 1, BUFFER_SIZE);
-			free(remainder[fd]);
-			remainder[fd] = tmp;
+			line = ft_substr(tail[fd], 0, eol_ptr - tail[fd] + 1);
+			tmp = ft_substr(tail[fd], eol_ptr - tail[fd] + 1, BUFFER_SIZE);
+			free(tail[fd]);
+			tail[fd] = tmp;
 			return (line);
 		}
-		line = remainder[fd];
-		remainder[fd] = NULL;
+		line = tail[fd];
+		tail[fd] = NULL;
 	}
 	else
 		line = ft_realloc(line, 1);
-	return (read_from_fd(fd, &remainder[fd], &line));
+	return (read_from_fd(fd, &tail[fd], &line));
 }
 
 static char	*read_from_fd(int fd, char **remainder, char **line)
